@@ -1,11 +1,10 @@
-import { Container } from "./assets/components/Container/Container"
+import { Container } from "./components/Container/Container"
+import { Header } from "./components/Header/Header"
 
 export const App = () => {
 
 	return <>
-		<header>
-
-		</header>
+		<Header />
 		<main>
 			<nav>
 				<Container className='navigation__container' />
