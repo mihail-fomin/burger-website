@@ -53,6 +53,26 @@ const orderSlice = createSlice({
 			} else {
 				state.orderList.push({ ...action.payload, count: 1 })
 			}
+		},
+		removeProduct: (state, action) => {
+			const productOrderList = state.orderList.find(
+				item => item.id === action.payload.id
+			)
+
+			if (productOrderList.count > 1) {
+				productOrderList.count -= 1
+
+				const productOrderGoods = state.orderGoods.find(
+					item => item.id === action.payload.id,
+				)
+
+				productOrderGoods.count = productOrderList.count
+
+				state.totalCount = sumCount(state.orderGoods)
+				state.totalPrice = sumPrice(state.orderGoods)
+			} else {
+				state.orderList = state.orderList.filter(item => item.id !== action.payload.id)
+			}
 		}
 	},
 	extraReducers: builder => {
@@ -81,5 +101,5 @@ const orderSlice = createSlice({
 	}
 })
 
-export const { addProduct } = orderSlice.actions;
+export const { addProduct, removeProduct } = orderSlice.actions;
 export default orderSlice.reducer

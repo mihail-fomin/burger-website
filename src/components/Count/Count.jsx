@@ -1,13 +1,16 @@
-import * as React from 'react'
+import { useDispatch } from 'react-redux'
 import style from './Count.module.css'
+import { addProduct, removeProduct } from '../../store/order/orderSlice'
 
 export const Count = ({ count, id }) => {
-	const addCount = () => {
+	const dispatch = useDispatch()
 
+	const addCount = () => {
+		dispatch(addProduct({ id }))
 	}
 
 	const removeCount = () => {
-
+		dispatch(removeProduct({ id }))
 	}
 
 	return (
