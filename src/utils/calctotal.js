@@ -1,10 +1,10 @@
 
-export const sumCount = orderGoods = orderGoods.reduce(
+export const sumCount = arr => arr.reduce(
 	(acc, item) => acc + item.count
 	, 0
 )
 
-export const sumPrice = orderGoods = orderGoods.reduce(
+export const sumPrice = arr => arr.reduce(
 	(acc, item) => acc + item.count * item.price
 	, 0
 )
